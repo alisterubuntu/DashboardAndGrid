@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+
+  hub:
+    image: selenium/hub:3.141.59
+    ports:
+      - 4444:4444
+    restart: always
+
+  chrome:
+    image: selenium/node-chrome:3.141.59
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+    restart: always
+
+  firefox:
+    image: selenium/node-firefox:3.141.59
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+    restart: always
+
+  allure:
+      image: "frankescobar/allure-docker-service"
+      environment:
+        CHECK_RESULTS_EVERY_SECONDS: 1
+        KEEP_HISTORY: 1
+      ports:
+        - "5050:5050"
+      volumes:
+        - /var/lib/jenkins/workspace/pytest_automation_project_copy_code/allure-results:/app/allure-results
+        - /var/lib/jenkins/workspace/pytest_automation_project_copy_code/allure-reports:/app/default-reports
