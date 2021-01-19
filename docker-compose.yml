@@ -32,5 +32,5 @@ services:
       ports:
         - "5050:5050"
       volumes:
-        - /var/lib/jenkins/workspace/pytest_automation_project_copy_code/allure-results:/app/allure-results
-        - /var/lib/jenkins/workspace/pytest_automation_project_copy_code/allure-reports:/app/default-reports
+        - /var/lib/jenkins/workspace/Docker_Compose_Start_Allure_And_Grid/allure-results:/app/allure-results
+        - /var/lib/jenkins/workspace/Docker_Compose_Start_Allure_And_Grid/allure-reports:/app/default-reports
